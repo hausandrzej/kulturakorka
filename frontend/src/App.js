@@ -6,6 +6,11 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/Login';
+import Register from './components/Register';
+import About from './components/About';
+import Addproject from './components/Addproject';
+import Projects from './components/Projects';
+
 
 
 function App() {
@@ -30,6 +35,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/api_test" element={<p>{message}</p>} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/addproject" element={<Addproject />} />
+
           </Routes>
 
 

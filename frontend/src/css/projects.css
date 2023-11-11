@@ -1,0 +1,255 @@
+
+#projectBody{
+    margin: 0px;
+    position: relative;
+    color: #502E16;
+}
+
+h1{
+    margin-top: 3em;
+}
+
+.normalHeader{
+    display: flex;
+    justify-content: space-around;
+    align-items:center ;
+}
+
+.naviCulture{
+    margin: 0;
+    padding: 0;
+    height: 5em ;
+    width: 10em;
+}
+
+.naviBar{
+background-color: #D3756B ;
+position: fixed;
+width: 100%;
+height: 108px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.navElements{
+    text-decoration: none;
+    color: #502E16;
+
+}
+
+.szukacz{
+    background: #FFFFFF;
+    border: 1px solid #502E16;
+    box-shadow: 0px 4px 4px #502E16;
+    border-radius: 90px;
+    height: 2em;
+}
+
+ul li{
+    display: inline;
+    padding: 0 2em;
+}
+
+
+
+.hello{
+    text-align: center;
+}
+
+
+.vineyardSection{
+  
+    border: 1px solid #000000 ;
+    padding-bottom: 1em;
+    max-width: 800px;
+}
+
+
+.vineyardPhoto{
+    aspect-ratio: 1;
+    width: 4em;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-top: 2em;
+}
+
+h2{
+    text-align: center;
+}
+
+p{
+    text-align: justify;
+    padding-left: 4em;
+    padding-right: 4em;
+}
+
+.icons{
+    text-align: center;
+}
+
+.fa-regular{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.projectsSection{
+    display: grid;
+    grid-template-columns: 0.5fr 3fr 0.2fr 3fr 0.5fr;
+    grid-gap: 2em;
+    padding: 2em;
+}
+
+.addProjectBody{
+    position: relative;
+    min-height: 100vh;
+}
+
+.dropdownmenu{
+    display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+
+    footer{
+        display: none;
+    }
+
+    .projectsSection{
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+    }
+
+
+}
+
+@media only screen and (max-width: 870px) {
+
+
+    .fa-solid{
+        position: relative;
+        top:30pX;
+        left: 120px;
+    }
+
+
+    .normalHeader{
+        display: none;
+    }
+    
+    
+    footer{
+        display: none;
+    }
+    
+    
+    .dropdownmenu{
+    display: inline;
+    }
+    
+    .doFlex ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dropdownmenu li{
+        float: left;
+        position: relative; 
+    }
+
+    .navElements{
+        color: #502E16;
+        font-weight: bold;
+        font-size: 13px;
+        position: relative;
+        right: 40px;
+        bottom: 25px;
+        width: 100px;
+
+    }
+
+
+    #submenu{
+        opacity: 0;
+
+        visibility: hidden;
+        z-index: 1;
+    }
+
+    li:hover ul#submenu{
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    
+}
+
+
+@media only screen and (max-width: 550px) {
+    
+    .naviCulture{
+        display: none;
+    }
+    
+    
+    .vineyardPhoto{
+        width: 30vw;
+        height: auto;
+        object-fit: cover;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 2em;
+    }
+
+    h2{
+        font-size: 4.5vw;
+    }
+
+    .naviBar{
+        height: 108px;
+    }
+
+
+    .navElements{
+ 
+        position: relative;
+        right: 60px;
+        bottom: 25px;
+
+    }
+
+    .projectsSection{
+       display: grid;
+       grid-template-columns: 0.5fr 3fr 0.2fr 3fr 0.5fr ;
+       grid-gap: 1em;
+    }
+
+    .vineyardSection{
+    border: none;
+    width: 30vw;
+
+
+    }
+
+
+    .icons{
+        display: none;
+    }
+    
+    p{
+        display: none;
+    }
+
+
+
+}
+
