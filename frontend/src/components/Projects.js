@@ -6,19 +6,28 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    // Zakładam, że masz endpoint API do pobrania projektów
-    fetch('/api/projects')
+    fetch("http://localhost:8000/app/projects/")
       .then(response => response.json())
       .then(data => setProjects(data))
       .catch(error => console.error('Error:', error));
   }, []);
 
+  const handleDelete = async (projectId) => {
+    try {
+      await fetch(`http://localhost:8000/app/projects/delete/${projectId}/`, {
+        method: 'DELETE',
+      });
+      setProjects(projects.filter(project => project.id !== projectId));
+    } catch (error) {
+      console.error('Error deleting project', error);
+    }
+  };
+
   return (
     <div>
       <div className="naviBar">
         <nav className="dropdownmenu">
-          <ul className="doFlex">
-            <li><img className="naviCulture" src="../img/logo2.svg" alt="Logo" /></li>
+          <li><img className="naviCulture" src="../img/logo2.svg" alt="Logo" /></li>
             <li>
               <i className="fa-solid fa-bars"></i>
               <ul id="submenu">
@@ -28,7 +37,6 @@ const Projects = () => {
                 <li><a className="navElements" href="">Sign up</a></li>
               </ul>
             </li>
-          </ul>
         </nav>
 
         <header className="normalHeader">
@@ -57,13 +65,16 @@ const Projects = () => {
         <section className="projectsSection">
           {projects.map((project) => (
             <div key={project.id} className="vineyardSection">
-              <img className="vineyardPhoto" src={`public/uploads/${project.image}`} alt="Vineyard" />
+              <img className="vineyardPhoto" src={project.file} alt="Vineyard" />
               <div>
                 <h2>{project.title}</h2>
                 <p>{project.description}</p>
                 <div className="icons">
-                  <i className="fa-regular fa-thumbs-up"> {project.like}</i>
-                  <i className="fa-regular fa-thumbs-down"> {project.dislike}</i>
+                  <i className="fa-regular fa-thumbs-up"></i>
+                  <i className="fa-regular fa-thumbs-down"></i>
+                  <button onClick={() => handleDelete(project.id)} className="delete-btn">
+                    Usuń
+                  </button>
                 </div>
               </div>
             </div>
@@ -71,7 +82,6 @@ const Projects = () => {
         </section>
       </div>
 
-      <footer>Copyright ©</footer>
     </div>
   );
 };
