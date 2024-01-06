@@ -3,21 +3,41 @@ import '../css/projects.css';
 import '../css/style.css';
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
+  const [allProjects, setAllProjects] = useState([]);
+  const [displayedProjects, setDisplayedProjects] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetch("http://localhost:8000/app/projects/")
       .then(response => response.json())
-      .then(data => setProjects(data))
+      .then(data => {
+        setAllProjects(data);
+        setDisplayedProjects(data);
+      })
       .catch(error => console.error('Error:', error));
   }, []);
+
+  const handleSearchKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const handleSearch = () => {
+    const filteredProjects = allProjects.filter(project =>
+      project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setDisplayedProjects(filteredProjects);
+  };
 
   const handleDelete = async (projectId) => {
     try {
       await fetch(`http://localhost:8000/app/projects/delete/${projectId}/`, {
         method: 'DELETE',
       });
-      setProjects(projects.filter(project => project.id !== projectId));
+      setAllProjects(allProjects.filter(project => project.id !== projectId));
+      setDisplayedProjects(displayedProjects.filter(project => project.id !== projectId));
     } catch (error) {
       console.error('Error deleting project', error);
     }
@@ -27,7 +47,8 @@ const Projects = () => {
     <div>
       <div className="naviBar">
         <nav className="dropdownmenu">
-          <li><img className="naviCulture" src="../img/logo2.svg" alt="Logo" /></li>
+          <ul className="doFlex">
+            <li><img className="naviCulture" src="../img/logo2.svg" alt="Logo" /></li>
             <li>
               <i className="fa-solid fa-bars"></i>
               <ul id="submenu">
@@ -37,11 +58,19 @@ const Projects = () => {
                 <li><a className="navElements" href="">Sign up</a></li>
               </ul>
             </li>
+          </ul>
         </nav>
 
         <header className="normalHeader">
           <img className="naviCulture" src="public/img/logo2.svg" alt="Logo" />
-          <input className="szukacz" type="text" placeholder="Find vineyard" />
+          <input
+            className="szukacz"
+            type="text"
+            placeholder="Find vineyard"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyPress={handleSearchKeyPress}
+          />
           <nav>
             <ul>
               <li><a className="navElements" href="projects">Menu</a></li>
@@ -63,7 +92,7 @@ const Projects = () => {
 
       <div className="mainPage">
         <section className="projectsSection">
-          {projects.map((project) => (
+          {displayedProjects.map((project) => (
             <div key={project.id} className="vineyardSection">
               <img className="vineyardPhoto" src={project.file} alt="Vineyard" />
               <div>
@@ -81,7 +110,6 @@ const Projects = () => {
           ))}
         </section>
       </div>
-
     </div>
   );
 };
