@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../css/projects.css';
 import '../css/style.css';
-
+import logo2 from '../img/logo2.svg';
 const Projects = () => {
   const [allProjects, setAllProjects] = useState([]);
   const [displayedProjects, setDisplayedProjects] = useState([]);
@@ -48,9 +48,8 @@ const Projects = () => {
       <div className="naviBar">
         <nav className="dropdownmenu">
           <ul className="doFlex">
-            <li><img className="naviCulture" src="../img/logo2.svg" alt="Logo" /></li>
+            <li><img className="naviCulture" src={logo2} alt="logo" /></li>
             <li>
-              <i className="fa-solid fa-bars"></i>
               <ul id="submenu">
                 <li><a className="navElements" href="projects">Menu</a></li>
                 <li><a className="navElements" href="addproject">add Project</a></li>
@@ -62,7 +61,7 @@ const Projects = () => {
         </nav>
 
         <header className="normalHeader">
-          <img className="naviCulture" src="public/img/logo2.svg" alt="Logo" />
+          <img className="naviCulture" src={logo2} alt="Logo" />
           <input
             className="szukacz"
             type="text"
@@ -93,14 +92,17 @@ const Projects = () => {
       <div className="mainPage">
         <section className="projectsSection">
           {displayedProjects.map((project) => (
-            <div key={project.id} className="vineyardSection">
+            <div key={project.id} className="vineyardSection projectItem">
               <img className="vineyardPhoto" src={project.file} alt="Vineyard" />
               <div>
                 <h2>{project.title}</h2>
                 <p>{project.description}</p>
+                <div className="project-tags">
+                  {project.tags && project.tags.map(tag => (
+                    <span key={tag.name} className="project-tag">{tag.name}</span>
+                  ))}
+                </div>
                 <div className="icons">
-                  <i className="fa-regular fa-thumbs-up"></i>
-                  <i className="fa-regular fa-thumbs-down"></i>
                   <button onClick={() => handleDelete(project.id)} className="delete-btn">
                     Usuń
                   </button>

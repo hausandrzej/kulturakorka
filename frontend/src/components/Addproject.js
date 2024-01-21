@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import '../css/projects.css';
 import '../css/style.css';
-//import logo from '../../public/img/logo2.svg'; // Załaduj logo jako moduł
-
+import logo2 from '../img/logo2.svg';
 const AddProject = () => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
+        tags: '',
         file: null
     });
     const [messages, setMessages] = useState([]);
@@ -25,6 +25,7 @@ const AddProject = () => {
         const data = new FormData();
         data.append('title', formData.title);
         data.append('description', formData.description);
+        data.append('tags', formData.tags);
         if (formData.file) {
             data.append('file', formData.file);
         }
@@ -57,21 +58,26 @@ const AddProject = () => {
 
             <div className="naviBar">
                 <nav className="dropdownmenu">
-                    <li><img className="naviCulture" src="../img/logo2.svg" alt="Logo" /></li>
-                    <li>
-                        <i className="fa-solid fa-bars"></i>
-                        <ul id="submenu">
-                            <li><a className="navElements" href="projects">Menu</a></li>
-                            <li><a className="navElements" href="addproject">add Project</a></li>
-                            <li><a className="navElements" href="about">About</a></li>
-                            <li><a className="navElements" href="">Sign up</a></li>
-                        </ul>
-                    </li>
+                    <ul>
+                        <li><img className="naviCulture" src={logo2} alt="Logo" /></li>
+
+
+                        <li>
+                            <i className="fa-solid fa-bars"></i>
+                            <ul id="submenu">
+                                <li><a className="navElements" href="projects">Menu</a></li>
+                                <li><a className="navElements" href="addproject">add Project</a></li>
+                                <li><a className="navElements" href="about">About</a></li>
+                                <li><a className="navElements" href="register">Sign up</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </nav>
 
                 <header className="normalHeader">
-                    <img className="naviCulture" src="public/img/logo2.svg" alt="Logo" />
-                    <input className="szukacz" type="text" placeholder="Find vineyard" />
+                    <img className="naviCulture" src={logo2} alt="Logo" />
+
+
                     <nav>
                         <ul>
                             <li><a className="navElements" href="projects">Menu</a></li>
@@ -96,38 +102,16 @@ const AddProject = () => {
                         )}
                         <input className="inputform" name="title" type="text" placeholder="title" onChange={handleChange} />
                         <textarea className="inputform" name="description" rows="5" placeholder="description" onChange={handleChange}></textarea>
+                        <input className="inputform" name="tags" type="text" placeholder="tags (separated by commas)" onChange={handleChange} />
                         <input className="inputform" type="file" name="file" onChange={handleChange} />
                         <button className="inputform" id="uploadbutton" type="submit">Dodaj Winnice</button>
                     </form>
                 </section>
             </div>
-            <footer>Copyright Â©</footer>
 
-            <div className="hello">
-                <br /><br />
-                <h1>CorkCulture</h1>
-                <h2>Out of love for wine.</h2>
-            </div>
-
-            <div className="uploadsection">
-                <section className="addProjectSection">
-                    <h3 className="inputform">UPLOAD</h3>
-                    <form className="addProjectForm" onSubmit={handleSubmit} encType="multipart/form-data">
-                        {messages.length > 0 && (
-                            <div>
-                                {messages.map((message, index) => (
-                                    <p key={index}>{message}</p>
-                                ))}
-                            </div>
-                        )}
-                        <input className="inputform" name="title" type="text" placeholder="title" onChange={handleChange} />
-                        <textarea className="inputform" name="description" rows="5" placeholder="description" onChange={handleChange}></textarea>
-                        <input className="inputform" type="file" name="file" onChange={handleChange} />
-                        <button className="inputform" id="uploadbutton" type="submit">Dodaj Winnice</button>
-                    </form>
-                </section>
-            </div>
-            <footer>Copyright Â©</footer>
+            <footer>
+                footer
+            </footer>
         </div>
     );
 };

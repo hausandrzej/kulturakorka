@@ -1,40 +1,26 @@
 #aboutBody {
-  margin: 0;
-  color: #502E16;
   position: absolute;
 }
 
 header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  /*display: flex;*/
+  /*justify-content: space-between;*/
+  /*align-items: center;*/
 }
 
 .logo {
+  background-color: #D3756B;
+  max-height: 100%;
+  margin-right: auto;
 
-  max-height: 100%; /* Maksymalna wysokość logo równa 100% wysokości nawigacji */
-  max-width: 100%;  /* Maksymalna szerokość logo równa 100% szerokości nawigacji */
-  margin-right: 1em; /* Opcjonalne: dodaj margines po prawej stronie logo, aby oddzielić je od innych elementów */
 }
 
-.search-box {
-  background: #FFFFFF;
-  border: 1px solid #502E16;
-  box-shadow: 0px 4px 4px #502E16;
-  border-radius: 90px;
-  height: 2em;
-}
-
-nav {
-  /* Styl dla nawigacji, jeśli potrzebne */
-}
 
 .nav-menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 
@@ -42,12 +28,7 @@ nav {
   text-decoration: none;
   color: #502E16;
   padding: 1em;
-  transition: background-color 0.3s ease;
-}
-
-.nav-item:hover {
-  background-color: #A85D4A;
-  color: #FFFFFF;
+  flex-grow: 1; /* Daje elementom równe podziały */
 }
 
 .about-section {
@@ -72,16 +53,11 @@ nav {
   margin-top: 100px;
 }
 
-footer {
-  /* Styl dla stopki, jeśli potrzebne */
-}
-
-/* Pozostałe style z poprzedniego kodu */
 
 .naviBar {
   background-color: #D3756B;
-  position: fixed;
+
   width: 100%;
   top: 0;
-  z-index: 1000;
+
 }

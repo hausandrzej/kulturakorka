@@ -1,7 +1,11 @@
+
+import logo from '../img/logo.svg';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Użyj useNavigate zamiast useHistory
 import '../css/style.css';
 
 const Register = () => {
+    const navigate = useNavigate(); // Użyj useNavigate zamiast useHistory
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -18,14 +22,39 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Logika obsługi wysyłania formularza
-        // Możesz tutaj wykonać walidację, wysłać dane do serwera itp.
+
+        // Check if password and confirmedPassword match
+        if (formData.password !== formData.confirmedPassword) {
+            setMessages(['Password and confirmed password do not match']);
+            return;
+        }
+
+        const response = await fetch('http://localhost:8000/register/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            // Handle errors
+            setMessages([data.message || 'Registration failed']);
+        } else {
+            // Successful registration logic here
+            setMessages(['Registration successful']);
+
+            // Redirect to the specified URL after successful registration
+            navigate('/projects');
+        }
     };
 
     return (
         <div className="container">
             <div className="logo">
-                <img className="corkCulture" src="public/img/logo.svg" alt="Logo" />
+                <img className="corkCulture" src={logo} alt="Logo" />
             </div>
             <div className="login-container">
                 <form className="login" onSubmit={handleSubmit}>
