@@ -1,4 +1,4 @@
-# CorkCulture
+git # CorkCulture
 
 CorkCulture to aplikacja internetowa, która promuje kulturę winiarską, umożliwiając użytkownikom dzielenie się swoimi doświadczeniami związanych z winem oraz odkrywanie nowych winnic i trunków z różnych regionów. Aplikacja zapewnia platformę, gdzie pasjonaci wina mogą dzielić się informacjami, recenzjami i zdjęciami związanych z winem, a także poznawać nowe obszary winiarskie.
 
@@ -60,3 +60,8 @@ Dodawanie projetu:
   <img src="readmephotos/addprojecttel.png" width="135" /> 
 </p>
 
+Dokumentacja Api:
+
+<p float="left">
+  <img src="readmephotos/swagger.png" width="512" />
+</p>
