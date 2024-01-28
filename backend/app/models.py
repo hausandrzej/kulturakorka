@@ -19,7 +19,7 @@ class Project(models.Model):
     file = models.ImageField(upload_to='./projects/', blank=True, null=True)
     tags = models.ManyToManyField('Tag', blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    nip = models.OneToOneField(NIP, on_delete=models.CASCADE, null=True, blank=True)  # Opcjonalne pole NIP
+    nip = models.OneToOneField(NIP, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.title

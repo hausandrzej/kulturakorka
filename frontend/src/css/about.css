@@ -38,7 +38,7 @@
 .about-description {
   text-align: justify;
   padding: 0 5%;
-  font-size: calc(16px + 1vw); /* Używając calc z vw, rozmiar czcionki będzie zależał od szerokości widoku */
+  font-size: calc(16px + 1vw);
 }
 
 #champagne-celebration {

@@ -101,7 +101,7 @@ img {
     font-family: 'Inter';
     font-style: normal;
     margin: 1em;
-    padding: 10px; /* Dodano padding, aby oddzielić inputy */
+    padding: 10px;
     word-wrap: break-word;
 }
 
@@ -165,7 +165,7 @@ footer{
 
 .delete-btn {
   position: absolute;
-  bottom: 5px; /* Przesunięcie przycisku o 5 pikseli powyżej dolnej granicy */
+  bottom: 5px;
 
   transform: translateX(-50%);
   border: solid 0.2em;
