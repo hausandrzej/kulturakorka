@@ -1,23 +1,41 @@
 import React from 'react';
 import '../css/about.css';
-
+import celebration from '../img/celebration.gif';
+import logo2 from '../img/logo2.svg';
 const About = () => {
   return (
     <div id="aboutBody">
-      <header className="naviBar">
-        <img className="logo" src="../img/logo2.svg" alt="Logo" />
-        <input className="search-box" type="text" placeholder="Search Vineyards" />
+                  <div className="naviBar">
+                <nav className="dropdownmenu">
+                    <ul>
+                        <li><img className="naviCulture" src={logo2} alt="Logo" /></li>
 
-        <nav>
-          <ul className="nav-menu">
-            <li><a className="nav-item" href="/projects">Menu</a></li>
-            <li><a className="nav-item" href="/projects">Menu</a></li>
-            <li><a className="nav-item" href="/addproject">Add Project</a></li>
-            <li><a className="nav-item active" href="/about">About</a></li>
-            <li><a className="nav-item" href="/register">Sign Up</a></li>
-          </ul>
-        </nav>
-      </header>
+
+                        <li>
+                            <ul id="submenu">
+                                <li><a className="navElements" href="projects">Menu</a></li>
+                                <li><a className="navElements" href="addproject">add Project</a></li>
+                                <li><a className="navElements" href="about">About</a></li>
+                                <li><a className="navElements" href="register">Sign up</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <header className="normalHeader">
+                    <img className="naviCulture" src={logo2} alt="Logo" />
+
+
+                    <nav>
+                        <ul>
+                            <li><a className="navElements" href="projects">Menu</a></li>
+                            <li><a className="navElements" href="addproject">add Project</a></li>
+                            <li><a className="navElements" href="about">About</a></li>
+                            <li><a className="navElements" href="register">Sign up</a></li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>
 
       <div className="about-section">
         <p className="about-description">
@@ -29,7 +47,7 @@ const About = () => {
           today and embark on a memorable journey through the world's vineyards. Cheers!
         </p>
 
-        <img id="champagne-celebration" src="public/img/celebration.png" alt="Celebrating with Champagne" />
+        <img id="champagne-celebration" src={celebration} alt="Leo" />
       </div>
 
       <footer>Copyright ©</footer>
